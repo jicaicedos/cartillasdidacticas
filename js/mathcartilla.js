@@ -9,7 +9,7 @@ var Cartilla = function (con)
 
     //Funciones
 	this.dibujar();
-	this.mostrarCuadricula();
+	// this.mostrarCuadricula();
 }
 
 Cartilla.prototype.dibujar = function() {
@@ -57,7 +57,40 @@ Cartilla.prototype.dibujar = function() {
 	dibujo.fill();
 	dibujo.closePath();
 }
+/*
+	==========================================================================
+	Función para practicar dibujar diferentes arcos
+	==========================================================================
+*/
+Cartilla.prototype.dibujarCirculos = function () {
+	var dibujo = this.contexto;
 
+	dibujo.beginPath();
+
+	// Circulo 1: Media naranja inferior
+	dibujo.moveTo(440,20); // Punto inicial
+	dibujo.fillStyle = "rgba(200,0,0,0.1)";	
+	dibujo.arc(400,20,40,0,Math.PI); 
+
+	// Circulo 2: Media naranja superior
+	dibujo.moveTo(440,120); // Punto inicial
+	dibujo.fillStyle = "rgba(200,0,0,0.1)";	
+	dibujo.arc(400,120,40,0,Math.PI,true); 
+
+	// Circulo 3: Tres cuartos de circunferencia
+	dibujo.moveTo(440,120); // Punto inicial
+	dibujo.fillStyle = "rgba(200,0,0,0.1)";	
+	dibujo.arc(400,120,40,0,Math.PI,true); 
+
+
+	dibujo.lineWidth = 3;
+	dibujo.stroke();
+}
+/*
+	==========================================================================
+	Función de utilidad para dibujar cuadricula guia para el lienzo de canvas
+	==========================================================================
+*/
 Cartilla.prototype.mostrarCuadricula = function () {
 	var dibujo = this.contexto;
 	
@@ -77,7 +110,30 @@ Cartilla.prototype.mostrarCuadricula = function () {
 	dibujo.stroke();
 	dibujo.closePath();
 }
+/*
+	=============================================
+	Funcion que dibuja una carita mediante arcos
+	=============================================
+*/
+Cartilla.prototype.smile = function () {
+	var dibujo = this.contexto;
 
+	dibujo.beginPath();
+	// arc(x_centro,y_centro,radio,angulo_inicial,angulo_final,sentido_manecillas_reloj);
+	dibujo.arc(240,200,80,0,Math.PI*2,true); // Contorno cara
+	dibujo.moveTo(300,200);
+	dibujo.arc(240,200,60,0,Math.PI); // boca sonrisa
+	dibujo.moveTo(220,170);
+	dibujo.arc(210,170,10,0,2*Math.PI);
+	dibujo.moveTo(280,170);
+	dibujo.arc(270,170,10,0,2*Math.PI);
+	dibujo.fillStyle = "rgba(200,0,0,0.3)";
+	dibujo.lineWidth = 10;
+	dibujo.fill();
+	dibujo.strokeStyle = "rgb(100,0,0)";
+	dibujo.stroke();
+
+}
 /*  
     ==================================================
 	Función que inicia el elemento canvas
@@ -92,7 +148,9 @@ function inicio() {
 		var areaJuego = canvas.getContext("2d");
 		juego = new Cartilla(areaJuego);
 		//juego.dibujar();
-		//juego.mostrarCuadricula();
+		juego.mostrarCuadricula();
+		juego.smile();
+		juego.dibujarCirculos();
 	}
 	else {
 		alert("Este navegador no soporta Canvas de HTML");
