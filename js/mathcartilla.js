@@ -14,24 +14,70 @@ var Cartilla = function (con)
 
 /*
 	=========================================================================
-
+	Función que realiza dibuja curvas de Bezier y Cuadrática
 	=========================================================================
 */
 Cartilla.prototype.curvasBezierCuadratica = function () {
 	var dibujo = this.contexto;
 
 	dibujo.beginPath();
-	dibujo.moveTo(520,40);
-	dibujo.fillStyle = "rgba(0,200,0,0.5)";
-	dibujo.fillRect(530,50,50,50);
+	dibujo.moveTo(480,80);
+	dibujo.fillStyle = "rgba(200,0,0,0.4)";
+
+	// Dibujando curva Cuadrática
+	// quadraticCurveTo(punto_control_x, punto_de_control_y, x, y);
+	dibujo.quadraticCurveTo(490,0,600,80);
+	dibujo.stroke();
+	dibujo.fill();
+	dibujo.closePath();
+
+
+	// Dibujando curva de Bezier (dos puntos de control)
+	// bezierCurveTo(puntoCX1, puntoCY1, puntoCX2, puntoCY2, x, y)
+	dibujo.beginPath();
+	dibujo.fillStyle = "rgba(200,0,200,0.5)";
+	dibujo.moveTo(480,160);
+	dibujo.bezierCurveTo(400,80,640,120,600,160);
 
 	dibujo.stroke();
+	dibujo.fill();
 	dibujo.closePath();
+
+	/* =============================================== */
+	// Forma de Diálogo con curva Cuadrática
+	dibujo.beginPath();
+	dibujo.fillStyle = "rgba(200,0,0,0.5)";
+	dibujo.lineWidth = 4;
+	dibujo.moveTo(480,220);
+	dibujo.quadraticCurveTo(480,180,540,180);
+	dibujo.quadraticCurveTo(600,180,600,220);
+	dibujo.quadraticCurveTo(610,270,520,260);
+	dibujo.quadraticCurveTo(520,280,480,280);
+	dibujo.quadraticCurveTo(520,280,500,260);
+	dibujo.quadraticCurveTo(480,260,480,220);
+	dibujo.fill();
+	dibujo.stroke();
+	dibujo.closePath();
+
+	/* =============================================== */
+	// Forma de Diálogo con curva de Bezier
+	dibujo.beginPath();
+	dibujo.fillStyle = "rgba(200,0,200,0.5)";
+	dibujo.lineWidth = 4;
+	dibujo.moveTo(480,340);
+	dibujo.bezierCurveTo(480,260,600,260,600,340);
+	dibujo.bezierCurveTo(600,360,580,380,520,380);
+	dibujo.bezierCurveTo(520,380,520,400,480,400);
+	dibujo.bezierCurveTo(520,380,480,380,480,340);
+	dibujo.fill();
+	dibujo.stroke();
+	dibujo.closePath();
+
 }
 
 /*
 	=========================================================================
-
+	Función que realiza rectangulos tipo FILLRECT, STROKERECT y CLEARRECT
 	=========================================================================
 */
 Cartilla.prototype.dibujar = function() {
@@ -167,7 +213,6 @@ Cartilla.prototype.smile = function () {
 	dibujo.fill();
 	dibujo.strokeStyle = "rgb(100,0,0)";
 	dibujo.stroke();
-
 }
 /*  
     ==================================================
@@ -186,6 +231,7 @@ function inicio() {
 		juego.mostrarCuadricula();
 		juego.smile();
 		juego.dibujarCirculos(true,true,"rgba(0,0,200,0.3)",2);
+		juego.curvasBezierCuadratica();
 	}
 	else {
 		alert("Este navegador no soporta Canvas de HTML");
