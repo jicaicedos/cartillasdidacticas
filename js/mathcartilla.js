@@ -12,6 +12,28 @@ var Cartilla = function (con)
 	// this.mostrarCuadricula();
 }
 
+/*
+	=========================================================================
+
+	=========================================================================
+*/
+Cartilla.prototype.curvasBezierCuadratica = function () {
+	var dibujo = this.contexto;
+
+	dibujo.beginPath();
+	dibujo.moveTo(520,40);
+	dibujo.fillStyle = "rgba(0,200,0,0.5)";
+	dibujo.fillRect(530,50,50,50);
+
+	dibujo.stroke();
+	dibujo.closePath();
+}
+
+/*
+	=========================================================================
+
+	=========================================================================
+*/
 Cartilla.prototype.dibujar = function() {
 	var dibujo = this.contexto;
 
@@ -58,33 +80,46 @@ Cartilla.prototype.dibujar = function() {
 	dibujo.closePath();
 }
 /*
-	==========================================================================
+	==============================================================================================
 	Función para practicar dibujar diferentes arcos
-	==========================================================================
+	Parametros	conContorno: define si las figuras o formas llevan la linea de borde
+				conRelleno:  define si las figuras se rellenarán con un color solido al interior
+				colorRelleno: Si las figuras o formas van con relleno esta define cual color
+				anchoLinea:  Grosor del contorno o borde de la figura
+	==============================================================================================
 */
-Cartilla.prototype.dibujarCirculos = function () {
+Cartilla.prototype.dibujarCirculos = function (conContorno,conRelleno,colorRelleno,anchoLinea) {
 	var dibujo = this.contexto;
 
 	dibujo.beginPath();
+	dibujo.fillStyle = colorRelleno;	
+	dibujo.lineWidth = anchoLinea;
 
-	// Circulo 1: Media naranja inferior
-	dibujo.moveTo(440,20); // Punto inicial
-	dibujo.fillStyle = "rgba(200,0,0,0.1)";	
-	dibujo.arc(400,20,40,0,Math.PI); 
+	// Arco 1: Media naranja inferior
+	dibujo.moveTo(440,40); // Punto inicial
+	dibujo.arc(400,40,40,0,Math.PI); 
 
-	// Circulo 2: Media naranja superior
-	dibujo.moveTo(440,120); // Punto inicial
-	dibujo.fillStyle = "rgba(200,0,0,0.1)";	
-	dibujo.arc(400,120,40,0,Math.PI,true); 
+	// Arco 2: Media naranja superior
+	dibujo.moveTo(440,160); // Punto inicial
+	dibujo.arc(400,160,40,0,Math.PI,true); 
 
-	// Circulo 3: Tres cuartos de circunferencia
-	dibujo.moveTo(440,120); // Punto inicial
-	dibujo.fillStyle = "rgba(200,0,0,0.1)";	
-	dibujo.arc(400,120,40,0,Math.PI,true); 
+	// Arco 3: Tres cuartos de circunferencia
+	dibujo.moveTo(440,240); // Punto inicial
+	dibujo.arc(400,240,40,0,(1.5)*Math.PI,false); 
 
+	// Arco 4: Cuarto de circunferencia
+	dibujo.moveTo(420,360);
+	dibujo.arc(380,360,40,0,1.5*Math.PI,true);
 
-	dibujo.lineWidth = 3;
-	dibujo.stroke();
+	if( conContorno ) {
+		dibujo.stroke();  // Dibuja el contorno de la figura (no rellena la figura)
+	}
+	if ( conRelleno ) {
+		dibujo.fill();    // Rellena la figuras o formas
+	}
+	
+	dibujo.closePath();
+
 }
 /*
 	==========================================================================
@@ -136,7 +171,7 @@ Cartilla.prototype.smile = function () {
 }
 /*  
     ==================================================
-	Función que inicia el elemento canvas
+	Función que inicia el elemento canvas y la App
     ==================================================
 */
 function inicio() {
@@ -150,7 +185,7 @@ function inicio() {
 		//juego.dibujar();
 		juego.mostrarCuadricula();
 		juego.smile();
-		juego.dibujarCirculos();
+		juego.dibujarCirculos(true,true,"rgba(0,0,200,0.3)",2);
 	}
 	else {
 		alert("Este navegador no soporta Canvas de HTML");
