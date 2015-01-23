@@ -177,7 +177,7 @@ Cartilla.prototype.dibujarCirculos = function (conContorno,conRelleno,colorRelle
 	==========================================================================
 */
 Cartilla.prototype.bolaEnMovimiento = function() {
-	timeID = setInterval(dibujarCircunferencias,2000);
+	timeID = setInterval(dibujarCircunferencias,1000);
 }
 
 dibujarCircunferencias = function () {
@@ -194,7 +194,6 @@ dibujarCircunferencias = function () {
 		areaJuego.closePath();		
 	}
 }
-
 
 /*
 	==========================================================================
