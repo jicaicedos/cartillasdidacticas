@@ -1,4 +1,8 @@
+var areaJuego;
 var juego;
+var contador = 0;
+var dibujoBola = true;
+var timeID;
 
 var Cartilla = function (con) 
 {
@@ -8,7 +12,7 @@ var Cartilla = function (con)
 	this.ancho = 0;	
 
     //Funciones
-	this.dibujar();
+	//this.dibujar();
 	// this.mostrarCuadricula();
 }
 
@@ -169,6 +173,31 @@ Cartilla.prototype.dibujarCirculos = function (conContorno,conRelleno,colorRelle
 }
 /*
 	==========================================================================
+	Funciones que dibuja una animación de una circunferencia
+	==========================================================================
+*/
+Cartilla.prototype.bolaEnMovimiento = function() {
+	timeID = setInterval(dibujarCircunferencias,2000);
+}
+
+dibujarCircunferencias = function () {
+	contador++;
+	if( contador==5 ) {
+		clearTimeout(timeID);
+	}
+	else {
+		areaJuego.beginPath();
+		areaJuego.moveTo(680,40);
+		areaJuego.fillStyle = "#0D711A";
+		areaJuego.arc(720,contador*80,40,0,2*Math.PI);
+		areaJuego.fill();  // Relleno para que se vea la imagen
+		areaJuego.closePath();		
+	}
+}
+
+
+/*
+	==========================================================================
 	Función de utilidad para dibujar cuadricula guia para el lienzo de canvas
 	==========================================================================
 */
@@ -225,13 +254,14 @@ function inicio() {
 	if( canvas.getContext )	{
 		canvas.width = 800;
 		canvas.height = 400;
-		var areaJuego = canvas.getContext("2d");
+		areaJuego = canvas.getContext("2d");
 		juego = new Cartilla(areaJuego);
-		//juego.dibujar();
+		juego.dibujar();
 		juego.mostrarCuadricula();
 		juego.smile();
 		juego.dibujarCirculos(true,true,"rgba(0,0,200,0.3)",2);
-		juego.curvasBezierCuadratica();
+		juego.curvasBezierCuadratica();		
+		juego.bolaEnMovimiento();
 	}
 	else {
 		alert("Este navegador no soporta Canvas de HTML");

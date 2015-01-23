@@ -1,4 +1,5 @@
 body {
+	background: #F8CB6D;
 	text-align: center;
 }
 header {
@@ -11,6 +12,7 @@ ul {
 	margin: 5px;
 }
 #canvas {
+	background: #FFFFFF;
 	border: 5px solid gray;
 	display: -webkit-inline-box;
 }
