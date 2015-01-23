@@ -12,11 +12,24 @@ ul {
 	margin: 5px;
 }
 
-#canvas {
+#canvasBasico {
 	background: #FFFFFF;
 	border: 5px solid gray;
 	display: -webkit-inline-box;
 }
+
+/*#canvasInicio {
+	background: #FFFFFF;
+	border: 5px solid gray;
+	display: -webkit-inline-box;
+}
+*/
+#canvasMedio {
+	background: #FFFFFF;	
+	border: 5px solid gray;
+	display: -webkit-inline-box;
+}
+
 
 #logo {
 	background: #4499FF;
@@ -26,9 +39,6 @@ ul {
 	height: 50px;
 }
 
-#inicioCanvas {
-	background: #FFFFFF;
-}
 
 #menu li {
 	display: -webkit-inline-box;

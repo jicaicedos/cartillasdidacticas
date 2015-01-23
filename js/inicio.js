@@ -1,10 +1,4 @@
-inicio = function() {
-	var canvas = document.getElementById("inicioCanvas");
-	if ( canvas.getContext ) {
-		canvas.width = 800;
-		canvas.height = 400;
-		var ctx = canvas.getContext("2d");
-
+smile = function(ctx) {
 		var x = 800/2, y = 400;
 
 		ctx.beginPath();
@@ -21,6 +15,19 @@ inicio = function() {
 		ctx.fill();
 		ctx.strokeStyle = "rgb(100,0,0)";
 		ctx.stroke();
+		ctx.closePath();
+}
+
+inicio = function() {
+	var canvas = document.getElementById("canvasInicio");
+	if ( canvas.getContext ) {
+		canvas.width = 800;
+		canvas.height = 400;
+		var ctx = canvas.getContext("2d");
+
+		// Dibujar Smile
+		smile(ctx);
+
 	}
 	else {
 		alert("El navegador no soporta CANVAS");

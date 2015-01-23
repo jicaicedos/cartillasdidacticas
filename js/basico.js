@@ -248,7 +248,7 @@ Cartilla.prototype.smile = function () {
     ==================================================
 */
 function inicio() {
-	var canvas = document.getElementById("canvas");
+	var canvas = document.getElementById("canvasBasico");
 	// Verficamos si el navegador a usar soporta canvas
 	if( canvas.getContext )	{
 		canvas.width = 800;
