@@ -31,9 +31,13 @@ ul {
 }
 
 
-#logo {
+#imgLogo, #imgPerfil {
+	border-radius: 50%;
+}
+#logo, #perfil {
 	background: #4499FF;
 	border: 1px solid gray;
+	border-radius: 50%;
 	margin: 5px;
 	width: 50px;
 	height: 50px;
@@ -48,10 +52,10 @@ ul {
 	width: 100px;
 }
 
-#perfil {
+/*#perfil {
 	background: #11FF99;
 	border: 1px solid gold;
 	margin: 5px;
 	width: 50px;
 	height: 50px;
-}
+}*/
