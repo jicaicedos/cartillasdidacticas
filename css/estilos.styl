@@ -41,12 +41,14 @@ header
 		padding 1em 1em
 		text-transform uppercase
 	& #img_html, #img_css3, #img_js
-		margin 1em
+		margin 1em 0
 		border-radius 50%
 		border 3px solid black
 		
 section
 	background color_gris
+	& p
+		display none
 	
 footer
 	background color_naranja
@@ -60,13 +62,45 @@ footer
 		display -webkit-inline-box
 		& a
 			background yellow
-			padding 1em 2em
+			padding 1em 1em
 			text-decoration none
 			list-style none
 			text-transform capitalize
 			
-footer
-	height 100%
+#canvasInicio {
+	background: #F5F1CC;
+	display -webkit-inline-box;
+	width 300px
+}
+
+// Mobile (portrait)
+@media only screen and (min-width: 480px) and (max-width: 767px)
+	section
+		background #FFF
+	#canvasInicio
+		width 500px
+
+// Mobile (landscape)
+@media only screen and (min-width: 768px)
+	#canvasInicio
+		width 800px
+
+
+
+// // Tablet (portrait)
+// @media only screen and (min-width: 768px)
+
+
+
+
+
+
+// @media screen and (min-width: 250px) and (max-width: 800px)
+// 	section
+// 		background orange
+// 	#canvasInicio
+// 		width 100px
+		
 // #menu
 // 	background #6556A4
 // 	display block
@@ -97,11 +131,6 @@ footer
 // 	display: -webkit-inline-box;
 // }
 
-#canvasInicio {
-	background: #FFFFFF;
-	// border: 5px solid gray;
-	display: -webkit-inline-box;
-}
 
 // #canvasMedio {
 // 	background: #FFFFFF;	
@@ -138,3 +167,6 @@ footer
 // 	width: 50px;
 // 	height: 50px;
 // }*/
+
+
+// pwd: 104238 --> SENA

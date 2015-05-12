@@ -1,5 +1,7 @@
 smile = function(ctx) {
-		var x = 800/2, y = 400;
+		var x = ancho/2
+		var y = alto;
+		// alert("valor: "+x)
 
 		ctx.beginPath();
 		// arc(x_centro,y_centro,radio,angulo_inicial,angulo_final,sentido_manecillas_reloj);
@@ -19,10 +21,17 @@ smile = function(ctx) {
 }
 
 inicio = function() {
+	ancho = 0
+	alto = 0
 	var canvas = document.getElementById("canvasInicio");
 	if ( canvas.getContext ) {
-		canvas.width = 800;
-		canvas.height = 400;
+		ancho = document.getElementById("ancho")
+		alto  = document.getElementById("alto")
+		ancho = parseInt(ancho.innerHTML)
+		alto = parseInt(alto.innerHTML)
+		// alert(ancho + alto)
+		canvas.width = ancho
+		canvas.height = alto
 		var ctx = canvas.getContext("2d");
 
 		// Dibujar Smile
