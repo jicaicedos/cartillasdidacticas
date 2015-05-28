@@ -7,12 +7,13 @@
 */
 
 dibujar = function(ctx) {
-	var x = 400, y = 200;
+	var x = ancho/2
+	var y = alto;
 	ctx.beginPath();
 
 	var rectangulo = new Path2D();
 	ctx.fillStyle = "rgb(200,0,0)";
-	rectangulo.rect(x-50,y-50,100,100);
+	rectangulo.rect(x-50,150,x-300,100);
 
 	// var rect2 = new Path2D(rectangulo);
 
@@ -22,10 +23,18 @@ dibujar = function(ctx) {
 }
 
 inicio = function() {
+	ancho = 0
+	alto = 0
 	var canvas = document.getElementById("canvasMedio");
 	if ( canvas.getContext ) {
-		canvas.width = 800;
-		canvas.height = 400;
+		ancho = document.getElementById("ancho")
+		alto  = document.getElementById("alto")
+		
+		ancho = parseInt(ancho.innerHTML)
+		alto = parseInt(alto.innerHTML)
+		// alert(ancho + alto)
+		canvas.width = ancho
+		canvas.height = alto
 		var ctx = canvas.getContext("2d");
 
 		// Dibujar Smile
