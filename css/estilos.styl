@@ -21,12 +21,13 @@ header
 	background color_verde
 	display flex
 	-webkit-justify-content space-around
+	justify-content space-around
 	& h1
 		background color_naranja
 		border 3px solid black
 		border-radius 10em
 		font-weight bold
-		margin 1em 2em
+		margin 1em 1em
 		padding 1em 1em
 		text-transform uppercase
 		box-shadow 10px 5px 10px #647044
@@ -35,8 +36,7 @@ header
 		border-radius 50%
 		border 3px solid black
 		box-shadow 10px 5px 10px #647044
-		
-		
+			
 section
 	// background color_gris
 	& p
@@ -67,26 +67,30 @@ footer
 	display -webkit-inline-box
 	width 300px
 
+#canvasBasico
+	background #F5F1CC
+	display -webkit-inline-box
+	width 300px
+	
 // Mobile (portrait)
 @media only screen and (min-width: 480px) and (max-width: 767px)
 	section
 		background #FFF
 	#canvasInicio
 		width 500px
+	#canvasBasico
+		width 500px
 
 // Mobile (landscape)
 @media only screen and (min-width: 768px)
 	#canvasInicio
 		width 800px
-
+	#canvasBasico
+		width 800px
 
 
 // // Tablet (portrait)
 // @media only screen and (min-width: 768px)
-
-
-
-
 
 
 // @media screen and (min-width: 250px) and (max-width: 800px)
@@ -136,14 +140,7 @@ footer
 // #imgLogo, #imgPerfil {
 // 	border-radius: 50%;
 // }
-// #logo, #perfil {
-// 	background: #4499FF;
-// 	border: 1px solid gray;
-// 	border-radius: 50%;
-// 	margin: 5px;
-// 	width: 50px;
-// 	height: 50px;
-// }
+
 
 
 // #menu li {
@@ -154,13 +151,7 @@ footer
 // 	width: 100px;
 // }
 
-// /*#perfil {
-// 	background: #11FF99;
-// 	border: 1px solid gold;
-// 	margin: 5px;
-// 	width: 50px;
-// 	height: 50px;
-// }*/
+
 
 
 // pwd: 104238 --> SENA

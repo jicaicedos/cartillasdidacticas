@@ -22,15 +22,18 @@ var Cartilla = function (con)
 	=========================================================================
 */
 Cartilla.prototype.curvasBezierCuadratica = function () {
+	var x = ancho/2
+	var y = alto;	
+
 	var dibujo = this.contexto;
 
 	dibujo.beginPath();
-	dibujo.moveTo(480,80);
+	dibujo.moveTo(x+80,80);
 	dibujo.fillStyle = "rgba(200,0,0,0.4)";
 
 	// Dibujando curva Cuadrática
 	// quadraticCurveTo(punto_control_x, punto_de_control_y, x, y);
-	dibujo.quadraticCurveTo(490,0,600,80);
+	dibujo.quadraticCurveTo(x+90,0,x+200,80);
 	dibujo.stroke();
 	dibujo.fill();
 	dibujo.closePath();
@@ -40,8 +43,8 @@ Cartilla.prototype.curvasBezierCuadratica = function () {
 	// bezierCurveTo(puntoCX1, puntoCY1, puntoCX2, puntoCY2, x, y)
 	dibujo.beginPath();
 	dibujo.fillStyle = "rgba(200,0,200,0.5)";
-	dibujo.moveTo(480,160);
-	dibujo.bezierCurveTo(400,80,640,120,600,160);
+	dibujo.moveTo(x+80,160);
+	dibujo.bezierCurveTo(x,80,x+240,120,x+200,160);
 
 	dibujo.stroke();
 	dibujo.fill();
@@ -52,13 +55,13 @@ Cartilla.prototype.curvasBezierCuadratica = function () {
 	dibujo.beginPath();
 	dibujo.fillStyle = "rgba(200,0,0,0.5)";
 	dibujo.lineWidth = 4;
-	dibujo.moveTo(480,220);
-	dibujo.quadraticCurveTo(480,180,540,180);
-	dibujo.quadraticCurveTo(600,180,600,220);
-	dibujo.quadraticCurveTo(610,270,520,260);
-	dibujo.quadraticCurveTo(520,280,480,280);
-	dibujo.quadraticCurveTo(520,280,500,260);
-	dibujo.quadraticCurveTo(480,260,480,220);
+	dibujo.moveTo(x+80,220);
+	dibujo.quadraticCurveTo(x+80,180,x+140,180);
+	dibujo.quadraticCurveTo(x+200,180,x+200,220);
+	dibujo.quadraticCurveTo(x+210,270,x+120,260);
+	dibujo.quadraticCurveTo(x+120,280,x+80,280);
+	dibujo.quadraticCurveTo(x+120,280,x+100,260);
+	dibujo.quadraticCurveTo(x+80,260,x+80,220);
 	dibujo.fill();
 	dibujo.stroke();
 	dibujo.closePath();
@@ -68,11 +71,11 @@ Cartilla.prototype.curvasBezierCuadratica = function () {
 	dibujo.beginPath();
 	dibujo.fillStyle = "rgba(200,0,200,0.5)";
 	dibujo.lineWidth = 4;
-	dibujo.moveTo(480,340);
-	dibujo.bezierCurveTo(480,260,600,260,600,340);
-	dibujo.bezierCurveTo(600,360,580,380,520,380);
-	dibujo.bezierCurveTo(520,380,520,400,480,400);
-	dibujo.bezierCurveTo(520,380,480,380,480,340);
+	dibujo.moveTo(x+80,340);
+	dibujo.bezierCurveTo(x+80,260,x+200,260,x+200,340);
+	dibujo.bezierCurveTo(x+200,360,x+180,380,x+120,380);
+	dibujo.bezierCurveTo(x+120,380,x+120,400,x+80,400);
+	dibujo.bezierCurveTo(x+120,380,x+80,380,x+80,340);
 	dibujo.fill();
 	dibujo.stroke();
 	dibujo.closePath();
@@ -139,6 +142,10 @@ Cartilla.prototype.dibujar = function() {
 	==============================================================================================
 */
 Cartilla.prototype.dibujarCirculos = function (conContorno,conRelleno,colorRelleno,anchoLinea) {
+
+	var x = ancho/2
+	var y = alto;	
+
 	var dibujo = this.contexto;
 
 	dibujo.beginPath();
@@ -146,20 +153,20 @@ Cartilla.prototype.dibujarCirculos = function (conContorno,conRelleno,colorRelle
 	dibujo.lineWidth = anchoLinea;
 
 	// Arco 1: Media naranja inferior
-	dibujo.moveTo(440,40); // Punto inicial
-	dibujo.arc(400,40,40,0,Math.PI); 
+	dibujo.moveTo(x+40,40); // Punto inicial
+	dibujo.arc(x,40,40,0,Math.PI); 
 
 	// Arco 2: Media naranja superior
-	dibujo.moveTo(440,160); // Punto inicial
-	dibujo.arc(400,160,40,0,Math.PI,true); 
+	dibujo.moveTo(x+40,160); // Punto inicial
+	dibujo.arc(x,160,40,0,Math.PI,true); 
 
 	// Arco 3: Tres cuartos de circunferencia
-	dibujo.moveTo(440,240); // Punto inicial
-	dibujo.arc(400,240,40,0,(1.5)*Math.PI,false); 
+	dibujo.moveTo(x+40,240); // Punto inicial
+	dibujo.arc(x,240,40,0,(1.5)*Math.PI,false); 
 
 	// Arco 4: Cuarto de circunferencia
-	dibujo.moveTo(420,360);
-	dibujo.arc(380,360,40,0,1.5*Math.PI,true);
+	dibujo.moveTo(x+20,360);
+	dibujo.arc(x-20,360,40,0,1.5*Math.PI,true);
 
 	if( conContorno ) {
 		dibujo.stroke();  // Dibuja el contorno de la figura (no rellena la figura)
@@ -248,11 +255,21 @@ Cartilla.prototype.smile = function () {
     ==================================================
 */
 function inicio() {
+	ancho = 0
+	alto = 0	
 	var canvas = document.getElementById("canvasBasico");
 	// Verficamos si el navegador a usar soporta canvas
 	if( canvas.getContext )	{
-		canvas.width = 800;
-		canvas.height = 400;
+		ancho = document.getElementById("ancho")
+		alto  = document.getElementById("alto")
+		ancho = parseInt(ancho.innerHTML)
+		alto = parseInt(alto.innerHTML)
+		// alert(ancho + alto)
+		canvas.width = ancho
+		canvas.height = alto
+
+		// canvas.width = 800;
+		// canvas.height = 400;
 		areaJuego = canvas.getContext("2d");
 		juego = new Cartilla(areaJuego);
 		juego.dibujar();

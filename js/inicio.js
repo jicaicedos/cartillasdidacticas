@@ -27,6 +27,7 @@ inicio = function() {
 	if ( canvas.getContext ) {
 		ancho = document.getElementById("ancho")
 		alto  = document.getElementById("alto")
+		
 		ancho = parseInt(ancho.innerHTML)
 		alto = parseInt(alto.innerHTML)
 		// alert(ancho + alto)
