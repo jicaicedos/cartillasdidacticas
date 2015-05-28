@@ -1,6 +1,6 @@
 // Definición de paleta de colores
-color_naranja = #ECAF0C
-color_verde = #53C187
+color_naranja = #F07C01
+color_verde = #00963F
 color_gris = #C1BEBE
 
 *
@@ -12,26 +12,15 @@ body, header, div, nav, footer
 	display block	
 
 body
-	background #E0E6E9
+	// background #E0E6E9
 	text-align center
-	
-// header
-// 	display inline-flex
-// 	border 3px solid orange
-	
-// #logo
-// 	border 1px solid black
-// #nombre
-// 	border 1px solid black
-// #perfil
-// 	border 1px solid black
-	
 	
 header
 	width 100%
 	text-align center
 	background color_verde
-	display -webkit-inline-box
+	display flex
+	-webkit-justify-content space-around
 	& h1
 		background color_naranja
 		border 3px solid black
@@ -40,13 +29,16 @@ header
 		margin 1em 2em
 		padding 1em 1em
 		text-transform uppercase
+		box-shadow 10px 5px 10px #647044
 	& #img_html, #img_css3, #img_js
 		margin 1em 0
 		border-radius 50%
 		border 3px solid black
+		box-shadow 10px 5px 10px #647044
+		
 		
 section
-	background color_gris
+	// background color_gris
 	& p
 		display none
 	
@@ -55,23 +47,25 @@ footer
 
 #menu
 	background #CCC
+	// background #999
 	margin 0
-	background #999
 	padding 1em 2em
 	& li
 		display -webkit-inline-box
+		border-right 2px solid black
 		& a
-			background yellow
+			// background yellow
 			padding 1em 1em
 			text-decoration none
 			list-style none
 			text-transform capitalize
+	& li:last-child
+		border-right none
 			
-#canvasInicio {
-	background: #F5F1CC;
-	display -webkit-inline-box;
+#canvasInicio
+	background #F5F1CC
+	display -webkit-inline-box
 	width 300px
-}
 
 // Mobile (portrait)
 @media only screen and (min-width: 480px) and (max-width: 767px)
